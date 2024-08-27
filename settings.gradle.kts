@@ -15,3 +15,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Search-work-app"
 include(":app")
+include(":login")
+include(":home")
+include(":job_page")
+include(":favorites")
+include(":response")
