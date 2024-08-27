@@ -68,6 +68,14 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.android.compat)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.androidx.compose)
+
+
     implementation(project(":ui"))
     implementation(project(":resources"))
     implementation(project(":login"))
