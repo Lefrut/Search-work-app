@@ -1,5 +1,6 @@
 package com.example.search_work_app
 
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
@@ -25,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import com.example.login.LoginScreen
 import com.example.navigation.Screen
 import com.example.resources.R
 import com.example.ui.theme.Colors
@@ -47,7 +49,7 @@ fun MenuScreen() {
         {
             when (currentScreen) {
                 Screen.Login -> {
-
+                    LoginScreen()
                 }
 
                 Screen.Home -> {
@@ -117,7 +119,9 @@ fun MenuIcon(menuItem: MenuItem, modifier: Modifier = Modifier, selected: Boolea
         Icon(
             painter = painterResource(id = menuItem.imageId),
             contentDescription = null,
-            modifier = Modifier.size(24.dp).padding(2.dp),
+            modifier = Modifier
+                .size(24.dp)
+                .padding(2.dp),
             tint = if (!selected) Colors.tab else Colors.secondary
 
         )
