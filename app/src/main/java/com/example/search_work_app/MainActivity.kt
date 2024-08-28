@@ -3,6 +3,7 @@ package com.example.search_work_app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.example.search_work_app.di.ViewModelModule
 import com.example.ui.theme.SearchworkappTheme
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -15,12 +16,12 @@ class MainActivity : ComponentActivity() {
         startKoin{
             androidLogger()
             androidContext(this@MainActivity)
-            modules()
+            modules(ViewModelModule)
         }
 
         setContent {
             SearchworkappTheme {
-
+                MenuScreen()
             }
         }
     }

@@ -81,7 +81,7 @@ dependencies {
     implementation(project(":login"))
     implementation(project(":home"))
     implementation(project(":ui"))
-    implementation(project(":ui"))
     implementation(project(":job_page"))
     implementation(project(":favorites"))
+    implementation(project(":navigation"))
 }

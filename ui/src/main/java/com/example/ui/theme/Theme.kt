@@ -1,25 +1,16 @@
 package com.example.ui.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -35,23 +26,25 @@ fun SearchworkappTheme(
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = Color.Black.toArgb()
-            window.navigationBarColor = Color.Black.toArgb()
-            WindowCompat.getInsetsController(window, view).apply {
-                isAppearanceLightStatusBars = true
-                isAppearanceLightNavigationBars = true
-            }
-        }
-    }
+
 
     CompositionLocalProvider(
         LocalAppColors provides AppColors(),
         LocalAppFonts provides AppFonts()
     ) {
-        Box(modifier = Modifier.fillMaxSize().background(color = LocalAppColors.current.surface)) {
+        if (!view.isInEditMode) {
+            val window = (view.context as Activity).window
+            window.statusBarColor = Colors.surface.toArgb()
+            window.navigationBarColor = Colors.surface.toArgb()
+            WindowCompat.getInsetsController(window, view).apply {
+                isAppearanceLightStatusBars = false
+                isAppearanceLightNavigationBars = false
+            }
+        }
+
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .background(color = LocalAppColors.current.surface)) {
             content()
         }
     }
@@ -105,17 +98,17 @@ data class AppFonts(
     val buttonText1: TextStyle =TextStyle(
         fontFamily = sfProDisplayFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 22.sp
+        fontSize = 16.sp
     ),
     val buttonText2: TextStyle = TextStyle(
         fontFamily = sfProDisplayFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 16.sp
+        fontSize = 14.sp
     ),
     val tabText: TextStyle =TextStyle(
         fontFamily = sfProDisplayFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 10.sp
     ),
     val number: TextStyle =TextStyle(
         fontFamily = sfProDisplayFontFamily,
@@ -128,10 +121,13 @@ data class AppFonts(
 
 @Immutable
 data class AppColors(
-    val surface: Color = black
+    val surface: Color = black,
+    val surfaceVariant: Color = grey1,
+    val tab: Color = grey4,
+    val secondary: Color = blue
 )
 
-private val black = Color.Black
+private val black = Color(0xFF0C0C0C)
 private val grey1 = Color(0xFF222325)
 private val grey2 = Color(0xFF313234)
 private val grey3 = Color(0xFF858688)
