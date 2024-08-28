@@ -123,6 +123,7 @@ data class AppFonts(
 data class AppColors(
     val surface: Color = black,
     val surfaceVariant: Color = grey1,
+    val onSurface: Color = white,
     val tab: Color = grey4,
     val secondary: Color = blue
 )

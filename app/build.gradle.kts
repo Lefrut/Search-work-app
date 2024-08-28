@@ -76,12 +76,12 @@ dependencies {
     implementation(libs.koin.androidx.compose)
 
 
-    implementation(project(":ui"))
-    implementation(project(":resources"))
+
     implementation(project(":login"))
     implementation(project(":home"))
-    implementation(project(":ui"))
     implementation(project(":job_page"))
     implementation(project(":favorites"))
     implementation(project(":navigation"))
+    implementation(project(":ui"))
+    implementation(project(":resources"))
 }
